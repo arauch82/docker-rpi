@@ -127,9 +127,9 @@ def main(argv):
         if o in ("-s", "--send-pin" ):
             sendPin = int(a)
         if o in ("-P", "--publish-topic" ):
-            pubTopic = a
+            mqttPubTopic = a
         if o in ("-S", "--subscribe-topic" ):
-            subTopic = a
+            mqttSubTopic = a
         if o in ("-l", "--log-level" ):
             logLevel = int(a)
         if o in ("-H", "--mqtt-host" ):
@@ -143,13 +143,13 @@ def main(argv):
 
     logger.setLevel(logLevel)
 
-    print "*** RPi MQTT to RF433 gateway ***"
-    print " - Receive pin (wiringPi) : %d" % recvPin
-    print " - Send pin (wiringPi)    : %d" % sendPin
-    print " - MQTT broker host       : %s" % mqttHost
-    print " - MQTT broker port       : %d" % mqttPort
-    print " - Publish to topic       : %s" % mqttPubTopic
-    print " - Subscribe to topic     : %s" % mqttSubTopic
+    print("*** RPi MQTT to RF433 gateway ***")
+    print(" - Receive pin (wiringPi) : %d" % recvPin)
+    print(" - Send pin (wiringPi)    : %d" % sendPin)
+    print(" - MQTT broker host       : %s" % mqttHost)
+    print(" - MQTT broker port       : %d" % mqttPort)
+    print(" - Publish to topic       : %s" % mqttPubTopic)
+    print(" - Subscribe to topic     : %s" % mqttSubTopic)
 
     connect()
     sniffer = RFSniffer(client, mqttPubTopic, logLevel)
